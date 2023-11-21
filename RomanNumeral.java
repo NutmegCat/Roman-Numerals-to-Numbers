@@ -27,6 +27,14 @@ class RomanNumeral {
     }
 
     public static int symbolToValue(char symbol) {
-        
+        String symbols = "IVXLCDM";
+        int [] values = {1, 5, 10, 50, 100, 500, 1000};
+
+        int index = symbols.indexOf(symbol);
+        if (index != -1) {
+            return values[index];
+        } else {
+            return 0;
+        }
     }
 }
