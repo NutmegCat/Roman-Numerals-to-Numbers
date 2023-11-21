@@ -3,8 +3,8 @@ class RomanNumeral {
         System.out.println("Enter a Roman numeral: ");
         String romanNumeral = In.getString();
 
-        while (romanNumeral.length() >= 4) {
-            System.out.println("Please enter a Roman numeral with less than 4 characters: ");
+        while (hasFourInARow(romanNumeral)) {
+            System.out.println("Please enter a Roman numeral without four or more of the same character in a row: ");
             romanNumeral = In.getString();
         }
 
@@ -12,6 +12,16 @@ class RomanNumeral {
 
         System.out.println("Roman numeral: " + romanNumeral);
         System.out.println("Number: " + integerValue);
+    }
+
+    public static boolean hasFourInARow(String str) {
+        for (int i = 0; i < str.length() - 3; i++) {
+            if (str.charAt(i) == str.charAt(i + 1) && str.charAt(i) == str.charAt(i + 2)
+                    && str.charAt(i) == str.charAt(i + 3)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static int romanToInteger(String roman) {
@@ -34,7 +44,7 @@ class RomanNumeral {
 
     public static int symbolToValue(char symbol) {
         String symbols = "IVXLCDM";
-        int [] values = {1, 5, 10, 50, 100, 500, 1000};
+        int[] values = { 1, 5, 10, 50, 100, 500, 1000 };
 
         int index = symbols.indexOf(symbol);
         if (index != -1) {
