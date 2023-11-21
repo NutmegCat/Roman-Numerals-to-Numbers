@@ -2,6 +2,12 @@ class RomanNumeral {
     public static void main(String[] args) {
         System.out.println("Enter a Roman numeral: ");
         String romanNumeral = In.getString();
+
+        while (romanNumeral.length() >= 4) {
+            System.out.println("Please enter a Roman numeral with less than 4 characters: ");
+            romanNumeral = In.getString();
+        }
+
         int integerValue = romanToInteger(romanNumeral);
 
         System.out.println("Roman numeral: " + romanNumeral);
