@@ -15,17 +15,10 @@ class RomanNumeral {
     }
 
     public static boolean hasFourInARow(String str) {
-        for (int i = 0; i <= str.length(); i++) {
+        for (int i = 0; i <= str.length() - 4; i++) {
             char currentChar = str.charAt(i);
-            boolean isRepeated = true;
 
-            for (int j = 1; j < 4; j++) {
-                if (str.charAt(j) != currentChar) {
-                    isRepeated = false;
-                    break;
-                }
-            }
-            if (isRepeated) {
+            if (str.charAt(i + 1) == currentChar && str.charAt(i + 2) == currentChar && str.charAt(i + 3) == currentChar) {
                 return true;
             }
         }
