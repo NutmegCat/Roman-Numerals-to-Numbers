@@ -1,35 +1,21 @@
-//
 class RomanNumeral
 {
     public static void main(String[] args) 
     {
+        //Get user input
         System.out.print("Enter a Roman numeral: ");
         String romanNumeral = In.getString();
-
-        while (hasFourInARow(romanNumeral) || hasMoreThanFourNumerals(romanNumeral)) 
+        
+        //If numeral has 4 of the same characters
+        if(hasMoreThanFourNumerals(romanNumeral)) 
         {
-            System.out.println("Invalid number, try again: ");
-            romanNumeral = In.getString();
+            int integerValue = romanToInteger(romanNumeral);
+            System.out.println("Number: " + integerValue);
         }
-
-        int integerValue = romanToInteger(romanNumeral);
-
-        System.out.println("Roman numeral: " + romanNumeral);
-        System.out.println("Number: " + integerValue);
-    }
-
-    public static boolean hasFourInARow(String str) 
-    {
-        for (int i = 0; i <= str.length() - 4; i++) 
+        else
         {
-            char currentChar = str.charAt(i);
-
-            if (str.charAt(i + 1) == currentChar && str.charAt(i + 2) == currentChar && str.charAt(i + 3) == currentChar) 
-            {
-                return true;
-            }
+            System.out.println("Invalid Number");
         }
-        return false;
     }
     
     public static boolean hasMoreThanFourNumerals(String romanNumeral)
@@ -42,6 +28,9 @@ class RomanNumeral
         {
             letters[i] = romanNumeral.charAt(i);
         }
+        
+        //Boolean Variable
+        boolean state = true;
         
         //Create count int
         int countI = 0;
@@ -82,13 +71,14 @@ class RomanNumeral
             {
                 countM += 1;
             }
-
+            
             if (countI >= 4 || countV >= 4 || countX >= 4 || countL >= 4 || countC >= 4 || countD >= 4 || countM >= 4)
             {
-                return false;
+                state = false;
+                return state;
             }
         }
-        return true;
+        return state;
     }
 
     public static int romanToInteger(String roman) 
