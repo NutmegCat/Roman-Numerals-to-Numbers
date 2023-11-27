@@ -51,7 +51,7 @@ class RomanNumeral {
                 countM += 1;
             }
 
-            if (countI >= 4 || countV >= 4 || countX >= 4 || countL >= 4 || countC >= 4 || countD >= 4 || countM >= 4) {
+            if (countI >= 4 || countV >= 2 || countX >= 4 || countL >= 2 || countC >= 4 || countD >= 2 || countM >= 4) {
                 state = false;
                 return state;
             }
