@@ -36,19 +36,19 @@ class RomanNumeral {
 
         for (int i = 0; i < romanNumeral.length(); i++) {
             if (letters[i] == 'I') {
-                countI++
+                countI++;
             } else if (letters[i] == 'V') {
-                countV++
+                countV++;
             } else if (letters[i] == 'X') {
-                countX++
+                countX++;
             } else if (letters[i] == 'L') {
-                countL++
+                countL++;
             } else if (letters[i] == 'C') {
-                countC++
+                countC++;
             } else if (letters[i] == 'D') {
-                countD++
+                countD++;
             } else if (letters[i] == 'M') {
-                countM++
+                countM++;
             }
 
             if (countI >= 4 || countV >= 4 || countX >= 4 || countL >= 4 || countC >= 4 || countD >= 4 || countM >= 4) {
