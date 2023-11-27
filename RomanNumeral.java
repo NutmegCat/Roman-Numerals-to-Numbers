@@ -4,16 +4,6 @@ class RomanNumeral {
         System.out.print("Enter a Roman numeral: ");
         String romanNumeral = In.getString();
 
-        // If numeral has 4 of the same characters
-        if (hasMoreThanFourNumerals(romanNumeral)) {
-            int integerValue = romanToInteger(romanNumeral);
-            System.out.println("Number: " + integerValue);
-        } else {
-            System.out.println("Invalid Number");
-        }
-    }
-
-    public static boolean hasMoreThanFourNumerals(String romanNumeral) {
         // State variables for array
         char[] letters = new char[romanNumeral.length()];
 
@@ -22,6 +12,16 @@ class RomanNumeral {
             letters[i] = romanNumeral.charAt(i);
         }
 
+        // If numeral has 4 of the same characters
+        if (hasMoreThanFourNumerals(romanNumeral, letters)) {
+            int integerValue = romanToInteger(romanNumeral, letters);
+            System.out.println("Number: " + integerValue);
+        } else {
+            System.out.println("Invalid Number");
+        }
+    }
+
+    public static boolean hasMoreThanFourNumerals(String romanNumeral, char[] letters) {
         // Boolean Variable
         boolean state = true;
 
@@ -51,7 +51,7 @@ class RomanNumeral {
                 countM++;
             }
 
-            if (countI >= 4 || countV >= 4 || countX >= 4 || countL >= 4 || countC >= 4 || countD >= 4 || countM >= 4) {
+            if (countI >= 4 || countV >= 2 || countX >= 4 || countL >= 2 || countC >= 4 || countD >= 2 || countM >= 4) {
                 state = false;
                 return state;
             }
@@ -59,21 +59,39 @@ class RomanNumeral {
         return state;
     }
 
-    public static int romanToInteger(String roman) {
-        int result = 0;
-        int prevValue = 0;
+    public static int romanToInteger(String romanNumeral, char[] letters) {
+        
+        // State variables for number array
+        char[] numbers = new char[romanNumeral.length()];
 
-        for (int i = roman.length() - 1; i >= 0; i--) {
-            char currentSymbol = roman.charAt(i);
-            int currentValue = symbolToValue(currentSymbol);
-
-            if (currentValue < prevValue) {
-                result -= currentValue;
-            } else {
-                result += currentValue;
-            }
-            prevValue = currentValue;
+        // Index each character
+        for (int i = 0; i < romanNumeral.length(); ++i) {
+               if (letters[i] == 'I') {
+                numbers[i] = 1;
+            } else if (letters[i] == 'V') {
+                numbers[i] = 5;
+            } else if (letters[i] == 'X') {
+                numbers[i] = 10;
+            } else if (letters[i] == 'L') {
+                numbers[i] = 50;
+            } else if (letters[i] == 'C') {
+                numbers[i] = 100;
+            } else if (letters[i] == 'D') {
+                numbers[i] = 500;
+            } else if (letters[i] == 'M') {
+                numbers[i] = 1000;
+            }         
         }
+
+        //Compare each number to determine the roman numeral
+        for (int i = 0; i < numbers.length; i++) {
+
+        }
+
+
+
+
+        int result = 0;
         return result;
     }
 
