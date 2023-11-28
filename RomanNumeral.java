@@ -1,10 +1,10 @@
 class RomanNumeral {
     public static void main(String[] args) {
-        // Get user input
+        // get user input
         System.out.print("Enter a Roman numeral: ");
         String romanNumeral = In.getString();
 
-        // If numeral has 4 of the same characters
+        // if numeral has 4 of the same characters
         if (hasMoreThanFourNumerals(romanNumeral)) {
             int integerValue = romanToInteger(romanNumeral);
             System.out.println("Number: " + integerValue);
@@ -14,18 +14,18 @@ class RomanNumeral {
     }
 
     public static boolean hasMoreThanFourNumerals(String romanNumeral) {
-        // State variables for array
+        // state variables for array
         char[] letters = new char[romanNumeral.length()];
 
-        // Index each character
+        // index each character
         for (int i = 0; i < romanNumeral.length(); ++i) {
             letters[i] = romanNumeral.charAt(i);
         }
 
-        // Boolean Variable
+        // boolean Variable
         boolean state = true;
 
-        // Create count int
+        // create count int
         int countI = 0;
         int countV = 0;
         int countX = 0;
@@ -34,6 +34,7 @@ class RomanNumeral {
         int countD = 0;
         int countM = 0;
 
+        // counts for letters
         for (int i = 0; i < romanNumeral.length(); i++) {
             if (letters[i] == 'I') {
                 countI++;
@@ -59,6 +60,7 @@ class RomanNumeral {
         return state;
     }
 
+    // numerals to decimal numbers
     public static int romanToInteger(String roman) {
         int result = 0;
         int prevValue = 0;
@@ -77,6 +79,7 @@ class RomanNumeral {
         return result;
     }
 
+    // numerals to a value (translation)
     public static int symbolToValue(char symbol) {
         String symbols = "IVXLCDM";
         int[] values = { 1, 5, 10, 50, 100, 500, 1000 };
